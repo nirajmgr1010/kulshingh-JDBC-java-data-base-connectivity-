@@ -4,6 +4,9 @@
     Author     : acer
 --%>
 
+<%@page import="com.entities.User"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="com.con.DbConnect"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

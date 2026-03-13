@@ -13,30 +13,49 @@
         <%@include file="Components/allLink.jsp" %>
         
     </head>
-    <body>
+    <body style="background-color: #f7faf8;">
          <%@include file="Components/Navbar.jsp" %>
          <div class="container-fluid">
-             <div class="row">
-                 <div class="com-md-6 offset-md-3">
+             <div class="row p-2">
+                 <div class="col-md-6 offset-md-3">
                      <div class="card">
                          <div class="card-body">
                              <h4 class="text-center text-success">Registration Page</h4>
-                             <form>
+                             <% String succsMsg = (String)session.getAttribute("SuccMsg");
+                                String ErrorMsg = (String)session.getAttribute("ErrorMsg");
+                               if(succsMsg != null){
+                                   %>
+                                     <p class="text-success text-center"><%=succsMsg%></p>
+                                <%
+                                  session.removeAttribute("SuccMsg");
+                               }
+                               if(ErrorMsg != null){
+                                 %>
+                                   <p class="text-danger text-center"><%=ErrorMsg%></p>
+                                <%
+                                   session.removeAttribute("ErrorMsg");
+                                    }
+                                %>
+                             <form action="register" method="post">
                                  
                                    <div class="form-group">
-                                  <label for="exampleInputEmail1">Enter Name</label>
-                                  <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                  <label for="exampleName">Enter Name</label>
+                                  <input name="name" type="text" class="form-control" id="exampleName">
                                 </div>
                                  
                                 <div class="form-group">
                                   <label for="exampleInputEmail1">Email address</label>
-                                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                  <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                                 </div>
                                 <div class="form-group">
                                   <label for="exampleInputPassword1">Password</label>
-                                  <input type="password" class="form-control" id="exampleInputPassword1">
+                                  <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+                                  
+                                  <div class="text-center mt-2"> 
+                                      <button type="submit" class="btn btn-primary">Register</button>
+                                  </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                
                               </form>
                          </div>
                      </div>
@@ -44,6 +63,9 @@
              </div>
          </div>
          
+                 <div style="margin-top: 180px">
+             <%@include file="Components/footer.jsp" %>
+         </div>
        
     </body>
 </html>
